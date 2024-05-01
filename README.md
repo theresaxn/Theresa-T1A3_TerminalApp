@@ -10,5 +10,6 @@
 
 ## Implementation Plan
 ![Expense Tracker Flowchart](docs/Expense-tracker_flowchart.png)
+
 ## Help Documentation
 
