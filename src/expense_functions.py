@@ -16,5 +16,8 @@ def view_expense(file_name):
     except FileNotFoundError:
         print("Expense Tracker file does not exist.")
 
+    except ValueError:
+        print("Nothing to view in Expense Tracker.")
+
 def search_expense(file_name):
     pass
