@@ -16,10 +16,10 @@ def create_menu():
 
 file_name = "expense_tracker.csv"
 
-if (not os.path.isfile(file_name)):
-    expense_file = open(file_name, "w")
-    expense_file.write("Date,Description,Amount\n")
-    expense_file.close()
+# if (not os.path.isfile(file_name)):
+#     expense_file = open(file_name, "w")
+#     expense_file.write("Date,Description,Amount\n")
+#     expense_file.close()
 
 choice = ""
 
@@ -28,15 +28,16 @@ while choice != "5":
 
     if choice == "1":
         add_expense(file_name)
-    if choice == "2":
+    elif choice == "2":
         remove_expense(file_name)
-    if choice == "3":
+    elif choice == "3":
         view_expense(file_name)
-    if choice == "4":
+    elif choice == "4":
+        pass
         search_expense(file_name)
-    if choice == "5":
+    elif choice == "5":
         pass
     else:
         print("Invalid selection, please try again.")
 
-print("Thank you for using the Expense Tracker application.")
+print("Thank you for using our Expense Tracker application.")
