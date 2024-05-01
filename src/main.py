@@ -1,3 +1,7 @@
+import os.path
+
+from expense_functions import add_expense, remove_expense, view_expense, search_expense
+
 print("Welcome to your Expense Tracker application.")
 
 def create_menu():
@@ -10,19 +14,26 @@ def create_menu():
     user_choice = input("Enter your selection: ")
     return user_choice
 
+file_name = "expense_tracker.csv"
+
+if (not os.path.isfile(file_name)):
+    expense_file = open(file_name, "w")
+    expense_file.write("Date,Description,Amount\n")
+    expense_file.close()
+
 choice = ""
 
 while choice != "5":
     choice = create_menu()
 
     if choice == "1":
-        pass
+        add_expense(file_name)
     if choice == "2":
-        pass
+        remove_expense(file_name)
     if choice == "3":
-        pass
+        view_expense(file_name)
     if choice == "4":
-        pass
+        search_expense(file_name)
     if choice == "5":
         pass
     else:
