@@ -16,10 +16,10 @@ def create_menu():
 
 file_name = "expense_tracker.csv"
 
-# if (not os.path.isfile(file_name)):
-#     expense_file = open(file_name, "w")
-#     expense_file.write("Date,Description,Amount\n")
-#     expense_file.close()
+if (not os.path.isfile(file_name)):
+    expense_file = open(file_name, "w")
+    expense_file.write("Date,Description,Amount\n")
+    expense_file.close()
 
 choice = ""
 
