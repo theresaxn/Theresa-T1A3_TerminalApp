@@ -9,8 +9,12 @@ def add_expense(file_name):
         print(f"Invalid date, please try again.")
         date_input = input("Enter date of expense (DD/MM/YYYY): ")
     description_input = input("Enter description of expense: ")
-    amount_input = format(float(input("Enter amount of expense: $")),".2f")
-    
+    try:
+        amount_input = format(float(input("Enter amount of expense: $")),".2f")
+    except ValueError:
+        print("Invalid value, please try again.")
+        amount_input = format(float(input("Enter amount of expense: $")),".2f")
+        
     with open(file_name, "a") as f:
         writer = csv.writer(f)
         writer.writerow([date_expense,description_input,amount_input])
