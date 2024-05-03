@@ -19,6 +19,19 @@ def add_expense(file_name):
         writer = csv.writer(f)
         writer.writerow([date_expense,description_input,amount_input])
 
+    print()
+
+    add_another_input = input("Add another expense (Y/N)? ")
+    if add_another_input.lower() == "y":
+        add_expense(file_name)
+    elif add_another_input.lower() == "n":
+        pass
+    else:
+        print("Invalid response, please try again.")
+        add_another_input = input("Add another expense (Y/N)? ")
+
+    print()
+
 def remove_expense(file_name):
     pass
 
@@ -33,6 +46,8 @@ def view_expense(file_name):
         print("Expense Tracker file does not exist.")
     except ValueError:
         print("Nothing to view in Expense Tracker.")
+    finally:
+        print()
 
 def search_expense(file_name):
     pass
