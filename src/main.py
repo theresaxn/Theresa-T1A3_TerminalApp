@@ -33,11 +33,9 @@ while choice != "5":
     elif choice == "3":
         view_expense(file_name)
     elif choice == "4":
-        pass
         search_expense(file_name)
     elif choice == "5":
-        pass
+        print("Thank you for using our Expense Tracker application.")
     else:
         print("Invalid selection, please try again.")
-
-print("Thank you for using our Expense Tracker application.")
+        add_line_break()
