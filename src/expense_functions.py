@@ -84,8 +84,8 @@ def view_expense(file_name):
 
 def search_expense(file_name):
     try:
-        min_range_input = format(float(input("Enter minimum amount to search from: $")),".2f")
-        max_range_input = format(float(input("Enter maximum amount to search to: $")),".2f")
+        min_range_input = float(input("Enter minimum amount to search from: $"))
+        max_range_input = float(input("Enter maximum amount to search to: $"))
     except ValueError:
         print("Invalid data entered, please try again.")
         search_expense(file_name)
@@ -96,7 +96,7 @@ def search_expense(file_name):
             reader.__next__()
             row_count = 0
             for row in reader:
-                if (float(min_range_input) <= float(row[2]) <= float(max_range_input)):
+                if (min_range_input <= float(row[2]) <= max_range_input):
                     print(f"Date: {row[0]}, Description: {row[1]}, Amount: ${row[2]}")
                     row_count =+ 1
             if row_count == 0:
