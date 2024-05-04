@@ -36,21 +36,24 @@ def remove_expense(file_name):
     except ValueError:
         print("Invalid value entered, please try again.")
         remove_expense(file_name)
-
-    with open(file_name,"r") as f:
-        reader = csv.reader(f)
-        is_exist = False
-        for index, row in enumerate(reader):
-            if (line_input != index):
-                expense_lists.append(row)
-            else:
-                is_exist = True
-    if not is_exist:
-        print("Line number does not exist.")
-    with open(file_name,"w") as f:
-        writer = csv.writer(f)
-        writer.writerows(expense_lists)
     
+    try:
+        with open(file_name,"r") as f:
+            reader = csv.reader(f)
+            is_exist = False
+            for index, row in enumerate(reader):
+                if (line_input != index):
+                    expense_lists.append(row)
+                else:
+                    is_exist = True
+        if not is_exist:
+            print("Line number does not exist.")
+        with open(file_name,"w") as f:
+            writer = csv.writer(f)
+            writer.writerows(expense_lists)
+    except FileNotFoundError:
+        print("Expense Tracker file does not exist.")
+        
     add_line_break()
 
     remove_another_input = input("Remove another expense (Y/N)? ")
