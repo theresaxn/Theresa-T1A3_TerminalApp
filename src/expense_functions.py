@@ -51,6 +51,18 @@ def remove_expense(file_name):
         writer = csv.writer(f)
         writer.writerows(expense_lists)
     
+    add_line_break()
+
+    remove_another_input = input("Remove another expense (Y/N)? ")
+    if remove_another_input.lower() == "y":
+        view_expense(file_name)
+        remove_expense(file_name)
+    elif remove_another_input.lower() == "n":
+        add_line_break()
+    else:
+        print("Invalid response, back to main menu.")
+        add_line_break()
+
 def view_expense(file_name):
     try:
         with open(file_name, "r") as f:
