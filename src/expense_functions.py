@@ -71,12 +71,37 @@ def view_expense(file_name):
         with open(file_name, "r") as f:
             reader = csv.reader(f)
             reader.__next__()
+            row_count = 0
             for index, row in enumerate(reader):
                 print(f"Line {index+1} - Date: {row[0]}, Description: {row[1]}, Amount: ${row[2]}")
+                row_count =+1
+        if row_count == 0:
+            print("Nothing to view in the Expense Tracker.")
     except FileNotFoundError:
         print("Expense Tracker file does not exist.")
     finally:
         add_line_break()
 
 def search_expense(file_name):
-    pass
+    try:
+        min_range_input = format(float(input("Enter minimum amount to search from: $")),".2f")
+        max_range_input = format(float(input("Enter maximum amount to search to: $")),".2f")
+    except ValueError:
+        print("Invalid data entered, please try again.")
+        search_expense(file_name)
+    
+    try:
+        with open(file_name,"r") as f:
+            reader = csv.reader(f)
+            reader.__next__()
+            row_count = 0
+            for row in reader:
+                if (float(min_range_input) <= float(row[2]) <= float(max_range_input)):
+                    print(f"Date: {row[0]}, Description: {row[1]}, Amount: ${row[2]}")
+                    row_count =+ 1
+            if row_count == 0:
+                print("No expenses found within range.")      
+    except FileNotFoundError:
+        print("Expense Tracker file does not exist.")
+    finally:
+        add_line_break()
