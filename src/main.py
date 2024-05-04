@@ -1,6 +1,6 @@
 import os.path
 
-from expense_functions import add_expense, remove_expense, view_expense, search_expense
+from expense_functions import add_line_break, add_expense, remove_expense, view_expense, search_expense
 
 print("Welcome to your Expense Tracker application.")
 
@@ -39,5 +39,7 @@ while choice != "5":
         pass
     else:
         print("Invalid selection, please try again.")
+
+add_line_break()
 
 print("Thank you for using our Expense Tracker application.")
