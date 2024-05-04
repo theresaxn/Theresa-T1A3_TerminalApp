@@ -5,11 +5,11 @@ from expense_functions import add_line_break, add_expense, remove_expense, view_
 print("Welcome to your Expense Tracker application.")
 
 def create_menu():
-    print("1. Enter 1 to add an expense to the list.")
-    print("2. Enter 2 to remove an expense on the list.")
-    print("3. Enter 3 to view all expenses on the list.")
-    print("4. Enter 4 to search from a $ range on the list.")
-    print("5. Enter 5 to exit.")
+    print("Enter 1 to add an expense to the list.")
+    print("Enter 2 to remove an expense on the list.")
+    print("Enter 3 to view all expenses on the list.")
+    print("Enter 4 to search from a $ range on the list.")
+    print("Enter 5 to exit.")
 
     user_choice = input("Enter your selection: ")
     return user_choice
@@ -39,5 +39,5 @@ while choice != "5":
         pass
     else:
         print("Invalid selection, please try again.")
-        
+
 print("Thank you for using our Expense Tracker application.")
