@@ -1,6 +1,9 @@
 import csv
 import datetime
 
+def add_line_break():
+    print()
+
 def add_expense(file_name):
     try:
         date_input = input("Enter date of expense (DD/MM/YYYY): ")
@@ -19,19 +22,18 @@ def add_expense(file_name):
         writer = csv.writer(f)
         writer.writerow([date_expense,description_input,amount_input])
 
-    print()
+    add_line_break()
 
     add_another_input = input("Add another expense (Y/N)? ")
+
     if add_another_input.lower() == "y":
-        add_expense(file_name)
+            add_expense(file_name)
     elif add_another_input.lower() == "n":
-        pass
+        add_line_break()
     else:
         print("Invalid response, please try again.")
         add_another_input = input("Add another expense (Y/N)? ")
-
-    print()
-
+    
 def remove_expense(file_name):
     pass
 
@@ -47,7 +49,7 @@ def view_expense(file_name):
     except ValueError:
         print("Nothing to view in Expense Tracker.")
     finally:
-        print()
+        add_line_break()
 
 def search_expense(file_name):
     pass
