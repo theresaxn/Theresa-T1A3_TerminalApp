@@ -11,7 +11,7 @@ def add_expense(file_name):
         description_input = input("Enter description of expense: ")
         amount_input = format(float(input("Enter amount of expense: $")),".2f")
     except ValueError:
-        print("Invalid value entered, please try again.")
+        print("Invalid data entered, please try again.")
         add_expense(file_name)
         
     with open(file_name, "a") as f:
@@ -34,8 +34,8 @@ def remove_expense(file_name):
         line_input = int(input("Enter line number to be deleted: "))
         expense_lists = []
     except ValueError:
-        print("Invalid value, please try again.")
-        line_input = int(input("Enter line number to be deleted: "))
+        print("Invalid value entered, please try again.")
+        remove_expense(file_name)
 
     with open(file_name,"r") as f:
         reader = csv.reader(f)
