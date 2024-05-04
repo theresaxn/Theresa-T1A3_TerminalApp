@@ -11,7 +11,7 @@ def create_menu():
     print("Enter 4 to search from a $ range on the list.")
     print("Enter 5 to exit.")
 
-    user_choice = input("Enter your selection: ")
+    user_choice = input("Please enter your selection: ")
     return user_choice
 
 file_name = "expense_tracker.csv"
