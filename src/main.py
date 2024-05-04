@@ -39,7 +39,5 @@ while choice != "5":
         pass
     else:
         print("Invalid selection, please try again.")
-
-add_line_break()
-
+        
 print("Thank you for using our Expense Tracker application.")
