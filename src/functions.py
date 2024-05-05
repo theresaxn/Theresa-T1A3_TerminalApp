@@ -34,20 +34,6 @@ def add_expense(file_name):
 
         add_line_break()
 
-        add_another_input = input(
-            colored.stylize("Add another expense (Y/N)? ", styling.input)
-        )
-        if add_another_input.lower() == "y":
-            add_line_break()
-            add_expense(file_name)
-        elif add_another_input.lower() == "n":
-            add_line_break()
-        else:
-            print(colored.stylize(
-                "Invalid response, returning to main menu."
-            ))
-            add_line_break()
-
     except ValueError:
         print(colored.stylize(
             "Invalid data entered, please try again.", styling.error
@@ -59,8 +45,25 @@ def add_expense(file_name):
         ))
         add_expense(file_name)
 
+def add_another_expense(file_name):
+    add_another_input = input(
+        colored.stylize("Add another expense (Y/N)? ", styling.input)
+    )
+    if add_another_input.lower() == "y":
+        add_line_break()
+        add_expense(file_name)
+        add_another_expense(file_name)
+    elif add_another_input.lower() == "n":
+        add_line_break()
+    else:
+        print(colored.stylize(
+            "Invalid response, returning to main menu."
+        ))
+        add_line_break()
+
 def remove_expense(file_name):
     try:
+        view_expense(file_name)
         line_input = int(input(
             colored.stylize("Enter line number to be deleted: ", styling.input)
         ))
@@ -84,20 +87,6 @@ def remove_expense(file_name):
             writer.writerows(expense_lists)
 
         add_line_break()
-        
-        remove_another_input = input(
-            colored.stylize("Remove another expense (Y/N)? ", styling.input)
-        )
-        if remove_another_input.lower() == "y":
-            view_expense(file_name)
-            remove_expense(file_name)
-        elif remove_another_input.lower() == "n":
-            add_line_break()
-        else:
-            print(colored.stylize(
-                "Invalid response, returning to main menu.", styling.error
-            ))
-            add_line_break()
 
     except ValueError:
         print(colored.stylize(
@@ -108,6 +97,21 @@ def remove_expense(file_name):
         print(colored.stylize(
             "Expense Tracker file does not exist.", styling.error
         ))
+
+def remove_another_expense(file_name):
+    remove_another_input = input(
+        colored.stylize("Remove another expense (Y/N)? ", styling.input)
+    )
+    if remove_another_input.lower() == "y":
+        remove_expense(file_name)
+        remove_another_expense(file_name)
+    elif remove_another_input.lower() == "n":
+        add_line_break()
+    else:
+        print(colored.stylize(
+            "Invalid response, returning to main menu.", styling.error
+        ))
+        add_line_break()
 
 def view_expense(file_name):
     try:
@@ -122,7 +126,7 @@ def view_expense(file_name):
                         styling.output
                     )
                 )
-                row_count =+1
+                row_count =+ 1
         if not row_count:
             add_line_break()
             print(colored.stylize(
@@ -175,20 +179,6 @@ def search_expense(file_name):
         
         add_line_break()
 
-        search_another_input = input(
-            colored.stylize("Search another range (Y/N)? ", styling.input)
-        )
-        if search_another_input.lower() == "y":
-            add_line_break()
-            search_expense(file_name)
-        elif search_another_input.lower() == "n":
-            add_line_break()
-        else:
-            print(colored.stylize(
-                "Invalid response, returning to main menu.", styling.error
-            ))
-            add_line_break()
-
     except ValueError:
         print(colored.stylize(
             "Invalid data entered, please try again.", styling.error
@@ -208,3 +198,19 @@ def search_expense(file_name):
         print(colored.stylize(
             "Expense Tracker file does not exist.", styling.error
         ))
+
+def search_another_expense(file_name):
+    search_another_input = input(
+        colored.stylize("Search another range (Y/N)? ", styling.input)
+    )
+    if search_another_input.lower() == "y":
+        add_line_break()
+        search_expense(file_name)
+        search_another_expense(file_name)
+    elif search_another_input.lower() == "n":
+        add_line_break()
+    else:
+        print(colored.stylize(
+            "Invalid response, returning to main menu.", styling.error
+        ))
+        add_line_break()
