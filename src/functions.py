@@ -34,7 +34,7 @@ def add_expense(file_name):
 
         add_line_break()
 
-        print(colored.stylized(
+        print(colored.stylize(
             "New expense added successfully", styling.output
         ))
 
@@ -89,15 +89,15 @@ def remove_expense(file_name):
             print(
                 colored.stylize("Line number does not exist.", styling.output)
             )
+        else:
+            add_line_break()
+            print(colored.stylize(
+            "Expense removed successfully", styling.output
+        ))
+
         with open(file_name,"w") as f:
             writer = csv.writer(f)
             writer.writerows(expense_lists)
-
-        add_line_break()
-
-        print(colored.stylized(
-            "Expense removed successfully", styling.output
-        ))
 
         add_line_break()
 
