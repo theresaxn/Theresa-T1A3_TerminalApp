@@ -57,7 +57,7 @@ def add_another_expense(file_name):
         add_line_break()
     else:
         print(colored.stylize(
-            "Invalid response, returning to main menu."
+            "Invalid response, returning to main menu.", styling.error
         ))
         add_line_break()
 
@@ -191,7 +191,8 @@ def search_expense(file_name):
         search_expense(file_name)
     except RangeError:
         print(colored.stylize(
-            "Minimum range cannot exceed maximum range search, please try again.", styling.error
+            "Minimum range cannot exceed maximum range search, please try again.",
+            styling.error
         ))
         search_expense(file_name) 
     except FileNotFoundError:
