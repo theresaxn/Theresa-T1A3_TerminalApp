@@ -6,12 +6,21 @@ from colored import Fore, Back, Style
 def add_line_break():
     print()
 
+class NegativeError(Exception):
+    pass
+
+class RangeError(Exception):
+    pass
+
 def add_expense(file_name):
     try:
         date_input = input(f"{Style.underline}Enter date of expense (DD/MM/YYYY):{Style.reset} ")
         date_expense = datetime.datetime.strptime(date_input,"%d/%m/%Y").strftime("%d-%m-%Y")
         description_input = input(f"{Style.underline}Enter description of expense:{Style.reset} ")
         amount_input = format(float(input(f"{Style.underline}Enter amount of expense:{Style.reset} $")),".2f")
+
+        if float(amount_input) < 0:
+            raise NegativeError
 
         with open(file_name, "a") as f:
             writer = csv.writer(f)
@@ -30,6 +39,9 @@ def add_expense(file_name):
 
     except ValueError:
         print(f"{Back.red}Invalid data entered, please try again.{Style.reset}")
+        add_expense(file_name)
+    except NegativeError:
+        print(f"{Back.red}No negative numbers, please try again.{Style.reset}")
         add_expense(file_name)
     except Exception:
         print(f"{Back.red}Unexpected error occurred, returning to main menu.{Style.reset}")
@@ -99,6 +111,12 @@ def search_expense(file_name):
         min_range_input = float(input(f"{Style.underline}Enter minimum amount to search from:{Style.reset} $"))
         max_range_input = float(input(f"{Style.underline}Enter maximum amount to search to:{Style.reset} $"))
 
+        if min_range_input < 0 or max_range_input < 0:
+            raise NegativeError
+        
+        if min_range_input > max_range_input:
+            raise RangeError
+        
         add_line_break()
         
         with open(file_name,"r") as f:
@@ -125,7 +143,13 @@ def search_expense(file_name):
 
     except ValueError:
         print(f"{Back.red}Invalid data entered, please try again.{Style.reset}")
-        search_expense(file_name)   
+        search_expense(file_name)
+    except NegativeError:
+        print(f"{Back.red}No negative numbers, please try again.{Style.reset}")
+        search_expense(file_name)
+    except RangeError:
+        print(f"{Back.red}Minimum range cannot exceed maximum range search, please try again.{Style.reset}")
+        search_expense(file_name) 
     except FileNotFoundError:
         print(f"{Back.red}Expense Tracker file does not exist.{Style.reset}")
     except Exception:
