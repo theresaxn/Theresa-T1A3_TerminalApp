@@ -34,6 +34,8 @@ def add_expense(file_name):
 
         add_line_break()
 
+        add_another_expense(file_name)
+
     except ValueError:
         print(colored.stylize(
             "Invalid data entered, please try again.", styling.error
@@ -52,7 +54,6 @@ def add_another_expense(file_name):
     if add_another_input.lower() == "y":
         add_line_break()
         add_expense(file_name)
-        add_another_expense(file_name)
     elif add_another_input.lower() == "n":
         add_line_break()
     else:
@@ -88,6 +89,8 @@ def remove_expense(file_name):
 
         add_line_break()
 
+        remove_another_expense(file_name)
+
     except ValueError:
         print(colored.stylize(
             "Invalid value entered, please try again.", styling.error
@@ -104,7 +107,6 @@ def remove_another_expense(file_name):
     )
     if remove_another_input.lower() == "y":
         remove_expense(file_name)
-        remove_another_expense(file_name)
     elif remove_another_input.lower() == "n":
         add_line_break()
     else:
@@ -179,6 +181,8 @@ def search_expense(file_name):
         
         add_line_break()
 
+        search_another_expense(file_name)
+
     except ValueError:
         print(colored.stylize(
             "Invalid data entered, please try again.", styling.error
@@ -207,7 +211,6 @@ def search_another_expense(file_name):
     if search_another_input.lower() == "y":
         add_line_break()
         search_expense(file_name)
-        search_another_expense(file_name)
     elif search_another_input.lower() == "n":
         add_line_break()
     else:

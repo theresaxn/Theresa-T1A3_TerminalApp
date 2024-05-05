@@ -36,18 +36,15 @@ while choice != "5":
     if choice == "1":
         functions.add_line_break()
         functions.add_expense(file_name)
-        functions.add_another_expense(file_name)
     elif choice == "2":
         functions.add_line_break()
         functions.remove_expense(file_name)
-        functions.remove_another_expense(file_name)
     elif choice == "3":
         functions.add_line_break()
         functions.view_expense(file_name)
     elif choice == "4":
         functions.add_line_break()
         functions.search_expense(file_name)
-        functions.search_another_expense(file_name)
     elif choice == "5":
         print(colored.stylize(
             "Thank you for using our Expense Tracker application.", styling.greeting
