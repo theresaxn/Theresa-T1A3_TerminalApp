@@ -136,7 +136,7 @@ def view_expense(file_name):
             for index, row in enumerate(reader):
                 print(
                     colored.stylize(
-                        f"Line {index+1} - Date: {row[0]}, Description: {row[1]}, Amount: ${row[2]}",
+                        f"Line {index + 1} - Date: {row[0]}, Description: {row[1]}, Amount: ${row[2]}",
                         styling.output
                     )
                 )

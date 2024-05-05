@@ -4,6 +4,54 @@
 - [Trello Board](https://trello.com/b/tWJwndoi/theresa-t1a3terminalapp)  
 - [GitHub Repository](https://github.com/theresanx/Theresa-T1A3_TerminalApp)
 
+## Help Documentation
+### System and Hardware Requirements
+
+There are no hardware requirements, however the device must have a terminal to run the application.
+
+The application can run on any of the following operating systems:
+- MacOS
+- Windows
+- Linux
+
+### Prerequisites
+- Python 3.10.12 or higher
+- Git
+
+### Dependencies
+The application requires the external package - colored 2.2.4 to run. This can be installed in the Python virtual environment.
+
+### Steps to Install
+1. Open WSL terminal
+2. Click on code on the GitHub repository and clone via SSH or HTTPS  
+![GitHub - code](docs/GitHub_code.png)  
+via SSH
+```
+git clone git@github.com:theresanx/Theresa-T1A3_TerminalApp.git
+```
+via HTTPS
+```
+git clone https://github.com/theresanx/Theresa-T1A3_TerminalApp.git
+```
+3. Navigate into the ```src``` directory by using ```cd PATH/src```
+where "PATH" is the file path where the src folder is located on your device
+4. When running the application for the first time, execute check.sh script to check if the necessary python verison is installed.
+Run the below commands in the terminal:
+```
+chmod +x check.sh
+```
+```
+./check.sh
+```
+Please ignore step 5 if step 4 is executed
+5. Or run the below commands in the terminal to start application:
+```
+chmod +x run.sh
+```
+```
+./run.sh
+```
+
 ## App Features
 ### Main Menu
 - Displays all options the user can choose from
@@ -12,7 +60,7 @@
 ![Main menu](/docs/Main-menu.png)  
 ![Main menu error](docs/Main-menu_error.png)
 
-- ```while``` loop, nested with an ```if elif else``` statement prompts the ```create_menu``` function until the user selects option 5 to exit
+- ```while``` loop, nested with an ```if elif else``` statement continually prompts the ```create_menu``` function until the user selects option 5 to exit
 
 <details>
 <summary>Click to expand code</summary>
@@ -75,7 +123,7 @@ while choice != "5":
 
 - ```add_expense``` and ```add_another_expense``` are separate functions to keep the them small (following Google Python style guide)
 - CSV file is opened in ```append``` mode to add the new expense into an existing file
-- Exception is raised to catch negative numbers and display the relevant error message
+- Error handling uses ```try except``` block, as well as ```if``` statement to raise an exception for negative numbers and display the relevant error messages
 
 <details>
 <summary>Click to expand code</summary>
@@ -153,6 +201,8 @@ def add_another_expense(file_name):
 
 - ```remove_expense``` and ```remove_another_expense``` are separate functions to keep the them small (following Google Python style guide)
 - CSV file is opened in ```reader``` mode locate expense line to be removed and then in ```writer``` mode to overwrite existing file
+- Line number (which is the index number) is found using ```enumerate``` function
+- Error handling uses ```try except``` blocks and displays the relevant error message
 
 ### Feature 3: View All Expenses
 - Displays all expenses in existing file
@@ -163,6 +213,8 @@ def add_another_expense(file_name):
 ![Feature 3 - No Expenses](docs/Feature3_no-expense.png)  
 
 - CSV file is opened in ```reader``` mode and displays all existing expenses using ```f-string```
+- Line number (in this case is index +1) is found using ```enumerate``` function
+- Error handling uses ```try except``` blocks and displays the relevant error message
 
 <details>
 <summary>Click to expand code</summary>
@@ -214,6 +266,7 @@ def view_expense(file_name):
 
 - ```search_expense``` and ```search_another_expense``` are separate functions to keep the them small (following Google Python style guide)
 - CSV file is opened in ```reader``` mode and displays all expenses within range using ```f-string```
+- Error handling uses ```try except``` block, as well as ```if``` statement to raise an exception for negative numbers and if min > max amount and display the relevant error messages
 
 <details>
 <summary>Click to expand code</summary>
@@ -304,10 +357,35 @@ def search_another_expense(file_name):
 ![Farewell message](/docs/Feature5.png)
 
 ## Implementation Plan
-![Expense Tracker Flowchart](docs/Expense-tracker_flowchart.png)
-## Help Documentation
+For my implementation plan, I started by created a Trello board to create a checklist of what to do in the planning stage. In this, I decided to create a flowchart diagram before adding more cards on the board.
 
-### Code Style Guide
+The below flowchart was created and helped me visualise the break down how each feature would work. With this, I could easily create a checklist on the steps needed to build each feature for each card on the Trello board. There were minor changes from the flowchart, for example, creating an error for Option 1 and 4 if the user inputs a negative number as it was not thought of until code execution. However, I had stuck to the flowchart for the most part.
+
+![Expense Tracker Flowchart](docs/Expense-tracker_flowchart.png)  
+![Trello - Planning Stage](docs/Trello_planning.png)
+
+Each feature had its own card with a checklist of what needed to be completed with a deadline. Each feature was prioritised by how easily it could be completed.
+
+![Trello - Feature 3](docs/Trello_feature3.png)  
+![Trello - Feature 1](docs/Trello_feature1.png)  
+![Trello - Feature 2](docs/Trello_feature2.png)  
+![Trello - Feature 4](docs/Trello_feature4.png)  
+
+Other cards included Import Packages, GitHub to ensure I was actively committing and pushing my work on my repository and the Help Documentation to ensure all requirements were covered. These had a longer deadline as these would be completed closer to the end of the project.
+
+![Trello - Packages](docs/Trello_packages.png)  
+![Trello - GitHub](docs/Trello_github.png)  
+![Trello - Help](docs/Trello_help.png)  
+
+## Packages
+My application uses the below packages:
+- **os.path** allows us to check if csv file exists
+- **csv** allows us to read or write in existing csv file
+- **datetime** allows us to manipulate the date
+- **colored** allows us to use colour and formatting in the terminal
+- **venv** allows us to create virtual environment
+
+## Code Style Guide
 My application adheres to the [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html).
 
 Some of the styling guides that I have implemented in my code includes:
@@ -322,9 +400,11 @@ Some of the styling guides that I have implemented in my code includes:
 - Whitespace standard rules
 - Use a f-string when appropriate
 
-### Referenced Sources
+### References
 - Google Python Style Guide: https://google.github.io/styleguide/pyguide.html
+- os.path: https://docs.python.org/3/library/os.path.html
 - datetime: https://docs.python.org/3/library/datetime.html
-- Colored: https://dslackw.gitlab.io/colored/user_guide/user_guide/#user-guide
+- venv: https://docs.python.org/3/library/venv.html
+- colored: https://dslackw.gitlab.io/colored/user_guide/user_guide/#user-guide
 
 
