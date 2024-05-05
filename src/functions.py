@@ -38,12 +38,12 @@ def add_expense(file_name):
 
     except ValueError:
         print(colored.stylize(
-            "Invalid data entered, please try again.", styling.error
+            "Invalid data entered. Please try again.", styling.error
         ))
         add_expense(file_name)
     except NegativeError:
         print(colored.stylize(
-            "No negative numbers, please try again.", styling.error
+            "No negative numbers. Please try again.", styling.error
         ))
         add_expense(file_name)
 
@@ -93,7 +93,7 @@ def remove_expense(file_name):
 
     except ValueError:
         print(colored.stylize(
-            "Invalid value entered, please try again.", styling.error
+            "Invalid value entered, use numbers only. Please try again.", styling.error
         ))
         remove_expense(file_name)
     except FileNotFoundError:
@@ -185,17 +185,17 @@ def search_expense(file_name):
 
     except ValueError:
         print(colored.stylize(
-            "Invalid data entered, please try again.", styling.error
+            "Invalid data entered, use numbers only. Please try again.", styling.error
         ))
         search_expense(file_name)
     except NegativeError:
         print(colored.stylize(
-            "No negative numbers, please try again.", styling.error
+            "No negative numbers. Please try again.", styling.error
         ))
         search_expense(file_name)
     except RangeError:
         print(colored.stylize(
-            "Minimum range cannot exceed maximum range search, please try again.",
+            "Minimum range cannot exceed maximum range search. Please try again.",
             styling.error
         ))
         search_expense(file_name) 
