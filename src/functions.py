@@ -34,6 +34,12 @@ def add_expense(file_name):
 
         add_line_break()
 
+        print(colored.stylized(
+            "New expense added successfully", styling.output
+        ))
+
+        add_line_break()
+
         add_another_expense(file_name)
 
     except ValueError:
@@ -86,6 +92,12 @@ def remove_expense(file_name):
         with open(file_name,"w") as f:
             writer = csv.writer(f)
             writer.writerows(expense_lists)
+
+        add_line_break()
+
+        print(colored.stylized(
+            "Expense removed successfully", styling.output
+        ))
 
         add_line_break()
 
