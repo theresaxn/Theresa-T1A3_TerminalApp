@@ -2,7 +2,7 @@
 
 ### URL:
 - [Trello Board](https://trello.com/b/tWJwndoi/theresa-t1a3terminalapp)  
-- [GitHub Repository](https://github.com/theresanx/Theresa-T1A3_TerminalApp)
+- [GitHub Repository](https://github.com/theresaxn/Theresa-T1A3_TerminalApp)
 
 ## Help Documentation
 ### System and Hardware Requirements
